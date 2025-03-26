@@ -58,10 +58,10 @@
             </StackPane>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="679.0" spacing="15.0" translateY="-15.0">
                <children>
-                  <TextField prefHeight="51.0" prefWidth="227.0" promptText="Write an actor" />
+                  <TextField fx:id="textfield1" prefHeight="51.0" prefWidth="227.0" promptText="Write an actor" />
                   <Label fx:id="txtto" text="to" />
-                  <TextField prefHeight="51.0" prefWidth="227.0" promptText="Write an actor" />
-                  <Button fx:id="btnfind" mnemonicParsing="false" prefHeight="47.0" prefWidth="116.0" text="Find Link" />
+                  <TextField fx:id="textfield2" prefHeight="51.0" prefWidth="227.0" promptText="Write an actor" />
+                  <Button fx:id="btnfind" mnemonicParsing="false" onAction="#findLink" prefHeight="47.0" prefWidth="116.0" text="Find Link" />
                </children>
                <VBox.margin>
                   <Insets left="100.0" />

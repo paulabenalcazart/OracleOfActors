@@ -5,8 +5,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -19,6 +21,7 @@ public class MainController implements Initializable {
     private double xOffset = 0;
     private double yOffset = 0;
     @FXML private Button minimizar, cerrar;
+    @FXML private TextField textfield1, textfield2;
     
     @FXML private Label labelWelcome,labelCredits, labelHIW;
     
@@ -73,6 +76,23 @@ public class MainController implements Initializable {
             e.printStackTrace();
         }
         });
+    }
+    
+    @FXML
+    private void findLink() throws IOException {
+        if(textfield1.getText().isBlank() || textfield2.getText().isBlank()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Fatal Error");
+            alert.setContentText("Please fill the blanks with actors.");
+            alert.showAndWait();
+            return;
+        }
+        App.setRoot("actorlinks");
+        linkActors();
+    }
+    
+    private void linkActors() {
+        /* LOGICA PARA GRAFOS */
     }
     
     @FXML
