@@ -1,0 +1,16 @@
+#cerrar, #minimizar {
+    -fx-text-fill: black;
+    -fx-background-color: transparent;
+    -fx-background-radius: 0; 
+}
+
+#cerrar:hover {
+    -fx-background-color: #F42E2E;
+    -fx-text-fill: white;
+}
+
+#minimizar:hover {
+    -fx-background-color:#E8E7E7;
+}
+
+
