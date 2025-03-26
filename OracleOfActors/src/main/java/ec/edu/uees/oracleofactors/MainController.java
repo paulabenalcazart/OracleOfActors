@@ -1,10 +1,12 @@
 package ec.edu.uees.oracleofactors;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -12,11 +14,13 @@ import javafx.stage.Stage;
 public class MainController implements Initializable {
 
     @FXML private AnchorPane root;
-    @FXML ImageView tmdbLogo;
+    @FXML ImageView tmdbLogo, maintitle;
     private Stage stage;
     private double xOffset = 0;
     private double yOffset = 0;
     @FXML private Button minimizar, cerrar;
+    
+    @FXML private Label labelWelcome,labelCredits, labelHIW;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -30,6 +34,35 @@ public class MainController implements Initializable {
             if (!stage.isFullScreen()) {
                 stage.setX(e.getScreenX() - xOffset);
                 stage.setY(e.getScreenY() - yOffset);
+            }
+        });
+        
+        maintitle.setOnMouseClicked(e -> {
+            try {
+                App.setRoot("main");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+        labelWelcome.setOnMouseClicked(e -> {
+            try {
+                App.setRoot("welcome");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+        labelCredits.setOnMouseClicked(e -> {
+            try {
+                App.setRoot("credits");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+        labelHIW.setOnMouseClicked(e -> {
+            try {
+                App.setRoot("howitworks");
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
         });
         

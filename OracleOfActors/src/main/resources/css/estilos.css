@@ -39,13 +39,17 @@
     -fx-text-fill: #333333;
 }
 
-#explicacion, #names, #txtto, #numbacon {
+#explicacion, #names, #txtto, #numbacon, #welcometitle, #creditstitle, #howtitle {
     -fx-font-size: 16px;
     -fx-font-weight: bold;
 }
 
 #names {
     -fx-font-size: 12px;
+}
+
+#maintitle:hover {
+    -fx-cursor: hand;
 }
 
 #btnfind {
@@ -106,6 +110,7 @@
     -fx-background-color: #5e7a92;
     -fx-cursor: hand;
     -fx-text-fill: white;
+    -fx-cursor: hand;
 }
 
 #tmdbLogo:hover{

@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import javafx.application.HostServices;
+import javafx.scene.image.Image;
 import javafx.stage.StageStyle;
 
 public class App extends Application {
@@ -19,8 +20,10 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         hostServices = getHostServices();
         scene = new Scene(loadFXML("main"));
+        Image icon = new Image(getClass().getResourceAsStream("/images/logo.png"));
         stage.setScene(scene);
         stage.initStyle(StageStyle.UNDECORATED);
+        stage.getIcons().add(icon);
         stage.show();
     }
 
