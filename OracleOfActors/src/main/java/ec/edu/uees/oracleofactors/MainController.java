@@ -5,12 +5,14 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class MainController implements Initializable {
 
     @FXML private AnchorPane root;
+    @FXML ImageView tmdbLogo;
     private Stage stage;
     private double xOffset = 0;
     private double yOffset = 0;
@@ -29,6 +31,14 @@ public class MainController implements Initializable {
                 stage.setX(e.getScreenX() - xOffset);
                 stage.setY(e.getScreenY() - yOffset);
             }
+        });
+        
+        tmdbLogo.setOnMouseClicked(event -> {
+        try {
+            App.getHostServicesInstance().showDocument("https://www.themoviedb.org/");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         });
     }
     

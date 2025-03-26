@@ -83,3 +83,31 @@
         #f3e6c5   /* 2. crema definida */
     );
 }
+    
+#fraseMain {
+    -fx-font-size: 10px;
+    -fx-text-fill: linear-gradient(to right, #6c63ff, #5a55e3);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 6, 0.3, 0, 2);
+    -fx-transition: all 0.3s ease-in-out;    
+    -fx-font-weight: bold;
+}
+
+#vboxMenu{
+    -fx-background-color: rgba(158, 189, 214, 0.5);
+
+}
+
+#labelWelcome, #labelHIW, #labelCredits {
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+}
+
+#labelWelcome:hover, #labelHIW:hover, #labelCredits:hover{
+    -fx-background-color: #5e7a92;
+    -fx-cursor: hand;
+    -fx-text-fill: white;
+}
+
+#tmdbLogo:hover{
+    -fx-cursor: hand;
+}

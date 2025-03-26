@@ -23,7 +23,7 @@
                   <Image url="@../../../../images/banner.png" />
                </image>
             </ImageView>
-            <HBox fx:id="maintitle" alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="970.0">
+            <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="970.0">
                <children>
                   <Button fx:id="minimizar" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#minimizarStage" prefHeight="63.0" prefWidth="70.0" text="-" translateY="-30.0">
                      <font>
@@ -37,39 +37,31 @@
                   </Button>
                </children>
             </HBox>
-            <ImageView fitHeight="110.0" fitWidth="705.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="maintitle" fitHeight="110.0" fitWidth="705.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../images/maintitle.png" />
                </image>
             </ImageView>
          </children>
       </StackPane>
-      <VBox alignment="CENTER" layoutX="96.0" layoutY="136.0" prefHeight="469.0" prefWidth="778.0" spacing="15.0">
+      <VBox alignment="CENTER" layoutX="96.0" layoutY="136.0" prefHeight="463.0" prefWidth="778.0" spacing="20.0">
          <children>
-            <Label fx:id="explicacion" text="Think of two actors and find out how they are connected!" />
-            <StackPane prefHeight="263.0" prefWidth="778.0">
-               <children>
-                  <ImageView fitHeight="302.0" fitWidth="507.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../images/networkexample.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </StackPane>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="679.0" spacing="15.0" translateY="-15.0">
+            <Label fx:id="numbacon" text="Actor 2 has a bacon number of n" />
+            <VBox fx:id="container" prefHeight="375.0" prefWidth="778.0" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="679.0" spacing="15.0" translateY="-20.0">
                <children>
                   <TextField prefHeight="51.0" prefWidth="227.0" promptText="Write an actor" />
                   <Label fx:id="txtto" text="to" />
                   <TextField prefHeight="51.0" prefWidth="227.0" promptText="Write an actor" />
                   <Button fx:id="btnfind" mnemonicParsing="false" prefHeight="47.0" prefWidth="116.0" text="Find Link" />
                </children>
-               <VBox.margin>
+               <padding>
                   <Insets left="100.0" />
-               </VBox.margin>
+               </padding>
             </HBox>
          </children>
       </VBox>
-      <Label fx:id="names" layoutX="14.0" layoutY="582.0" opacity="0.5" prefHeight="34.0" prefWidth="187.0" text="Fabián Rodas &amp; Paula Benalcázar" />
+      <Label fx:id="names" layoutX="14.0" layoutY="590.0" opacity="0.5" text="Fabián Rodas &amp; Paula Benalcázar" />
       <Label fx:id="fraseMain" layoutX="232.0" layoutY="582.0" opacity="0.5" prefHeight="34.0" prefWidth="732.0" text="&quot;Think two actors are worlds apart? Think again.&quot;Discover the surprising connections between your favorite actors through the movies they've shared." wrapText="true">
          <font>
             <Font size="11.0" />
