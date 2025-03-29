@@ -1,0 +1,4 @@
+src/main/resources/connection/config.json
+nbproject/private/
+target/
+*.log
