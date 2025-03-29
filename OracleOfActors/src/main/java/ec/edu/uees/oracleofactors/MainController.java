@@ -23,7 +23,7 @@ public class MainController implements Initializable {
     @FXML private Button minimizar, cerrar;
     @FXML private TextField textfield1, textfield2;
     
-    @FXML private Label labelWelcome,labelCredits, labelHIW;
+    @FXML private Label labelWelcome,labelCredits, labelHIW, labelFabian, labelPaula, labelOracle;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -76,6 +76,31 @@ public class MainController implements Initializable {
             e.printStackTrace();
         }
         });
+        
+        if(labelFabian != null || labelPaula != null || labelOracle != null) {
+            labelFabian.setOnMouseClicked(event -> {
+            try {
+                App.getHostServicesInstance().showDocument("https://github.com/Fabianrodas");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            });    
+            labelPaula.setOnMouseClicked(event -> {
+            try {
+                App.getHostServicesInstance().showDocument("https://github.com/paulabenalcazart");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            });
+
+            labelOracle.setOnMouseClicked(event -> {
+            try {
+                App.getHostServicesInstance().showDocument("https://oracleofbacon.org");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            });
+        }
     }
     
     @FXML

@@ -116,3 +116,31 @@
 #tmdbLogo:hover{
     -fx-cursor: hand;
 }
+
+
+#labelFabian, #labelPaula, #labelOracle {
+    -fx-text-fill: #2c6493;
+    -fx-font-weight: bold;
+    -fx-text-size: 13px;
+}
+
+#labelFabian:hover {
+    -fx-cursor: hand;
+    -fx-underline: true;
+    -fx-font-size: 14px;
+    -fx-pref-width: 98px;
+}
+
+#labelPaula:hover {
+    -fx-cursor: hand;
+    -fx-underline: true;
+    -fx-font-size: 14px;
+    -fx-pref-width: 260px;
+}
+
+#labelOracle:hover {
+    -fx-cursor: hand;
+    -fx-underline: true;
+    -fx-font-size: 14px;
+    -fx-pref-width: 300px;
+}

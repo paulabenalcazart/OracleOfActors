@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -49,11 +50,56 @@
                   <Label fx:id="creditstitle" text="Acknowledgements" />
                   <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="342.0" prefWidth="430.0" spacing="10.0">
                      <children>
-                        <Label prefHeight="34.0" prefWidth="270.0" text="•  Fabián Rodas who programmed this application" wrapText="true" />
-                        <Label prefHeight="34.0" prefWidth="315.0" text="•  Paula Benalcázar who also programmed this application" wrapText="true" />
+                        <HBox prefHeight="17.0" prefWidth="439.0">
+                           <children>
+                              <Label prefHeight="19.0" prefWidth="40.0" text="•" wrapText="true">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="labelFabian" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="92.0" text=" Fabián Rodas" wrapText="true">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <Label prefHeight="17.0" prefWidth="439.0" text="who programmed this application" wrapText="true">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="17.0" prefWidth="439.0">
+                           <children>
+                              <Label prefHeight="19.0" prefWidth="40.0" text="•" wrapText="true">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="labelPaula" prefHeight="19.0" prefWidth="244.0" text=" Paula Benalcázar" wrapText="true">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <Label prefHeight="17.0" prefWidth="439.0" text="who also programmed this application" wrapText="true">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
                         <VBox prefHeight="108.0" prefWidth="430.0">
                            <children>
-                              <Label prefHeight="34.0" prefWidth="361.0" text="•  TMDB is the source of all our movie, TV, actor, and actress data" wrapText="true" />
+                              <Label prefHeight="34.0" prefWidth="387.0" text="•  TMDB is the source of all our movie, TV, actor, and actress data" wrapText="true">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font></Label>
                               <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="61.0" style="-fx-background-color: #2c6493;" translateX="15.0">
                                  <children>
                                     <ImageView fitHeight="89.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
@@ -65,11 +111,44 @@
                               </VBox>
                            </children>
                         </VBox>
-                        <Label prefHeight="34.0" prefWidth="310.0" text="•  Google images for bringing quality images for the banner" wrapText="true" />
-                        <Label prefHeight="34.0" prefWidth="310.0" text="•  remove.bg for making our lives easy on every project" wrapText="true" />
-                        <Label prefHeight="34.0" prefWidth="364.0" text="•  Mister Eduardo for teaching us and giving us the idea for the project" wrapText="true" />
-                        <Label prefHeight="34.0" prefWidth="403.0" text="•  ChatGPT and other sources for helping with code problems and questions" wrapText="true" />
-                        <Label prefHeight="34.0" prefWidth="403.0" text="•  The Oracle of Bacon, the original idea" wrapText="true" />
+                        <Label prefHeight="17.0" prefWidth="439.0" text="•  Google images for bringing quality images for the banner" wrapText="true">
+                           <font>
+                              <Font size="13.0" />
+                           </font></Label>
+                        <Label prefHeight="29.0" prefWidth="332.0" text="•  remove.bg for making our lives easy on every project" wrapText="true">
+                           <font>
+                              <Font size="13.0" />
+                           </font></Label>
+                        <Label prefHeight="26.0" prefWidth="437.0" text="•  Mister Eduardo for teaching us and giving us the idea for the project" wrapText="true">
+                           <font>
+                              <Font size="13.0" />
+                           </font></Label>
+                        <Label prefHeight="30.0" prefWidth="464.0" text="•  ChatGPT &amp; other sources for helping with code problems and questions" wrapText="true">
+                           <font>
+                              <Font size="13.0" />
+                           </font></Label>
+                        <HBox prefHeight="17.0" prefWidth="439.0">
+                           <children>
+                              <Label prefHeight="19.0" prefWidth="40.0" text="•" wrapText="true">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="labelOracle" prefHeight="19.0" prefWidth="290.0" text=" The Oracle of Bacon," wrapText="true">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <Label prefHeight="17.0" prefWidth="439.0" text="the original idea" wrapText="true">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
                      </children>
                   </VBox>
                </children></VBox>
