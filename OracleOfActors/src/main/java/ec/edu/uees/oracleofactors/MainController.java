@@ -1,7 +1,11 @@
 package ec.edu.uees.oracleofactors;
 
+import ec.edu.uees.model.ConfigLoader;
+import ec.edu.uees.model.TMDBConnection;
+import ec.edu.uees.oracleofactors.App;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -27,6 +31,7 @@ public class MainController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+       
         root.setOnMousePressed(e -> {
             xOffset = e.getSceneX();
             yOffset = e.getSceneY();
