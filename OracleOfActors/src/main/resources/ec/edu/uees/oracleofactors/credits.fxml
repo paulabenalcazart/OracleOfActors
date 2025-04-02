@@ -7,21 +7,24 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="970.0" stylesheets="@../../../../css/estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.uees.oracleofactors.MainController">
    <children>
-      <StackPane layoutX="-6.0" prefHeight="40.0" prefWidth="485.0">
+      <AnchorPane fx:id="anchorpane" prefHeight="120.0" prefWidth="970.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" height="120.0" stroke="BLACK" strokeType="INSIDE" translateX="-5.0" width="982.0" />
-            <ImageView fitHeight="120.0" fitWidth="970.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../images/banner.png" />
-               </image>
-            </ImageView>
+            <Rectangle fx:id="black" arcHeight="5.0" arcWidth="5.0" height="120.0" stroke="BLACK" strokeType="INSIDE" width="982.0" />
+            <AnchorPane fx:id="bannerPane" prefHeight="120.0" prefWidth="970.0">
+               <children>
+                  <ImageView fx:id="banner1" fitHeight="120.0" fitWidth="970.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../images/banner.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
             <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="970.0">
                <children>
                   <Button fx:id="minimizar" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#minimizarStage" prefHeight="63.0" prefWidth="70.0" text="-" translateY="-30.0">
@@ -36,13 +39,13 @@
                   </Button>
                </children>
             </HBox>
-            <ImageView fx:id="maintitle" fitHeight="110.0" fitWidth="705.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="maintitle" fitHeight="110.0" fitWidth="705.0" layoutX="130.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../images/maintitle.png" />
                </image>
             </ImageView>
          </children>
-      </StackPane>
+      </AnchorPane>
       <VBox alignment="CENTER" layoutX="96.0" layoutY="136.0" prefHeight="463.0" prefWidth="778.0" spacing="10.0" translateY="-10.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="408.0" prefWidth="778.0" spacing="20.0">
