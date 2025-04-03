@@ -24,7 +24,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -140,7 +139,23 @@ public class ActorLinksController implements Initializable {
         }
     }
     
+    private String capitalizarNombre(String nombre) {
+        if (nombre == null || nombre.isBlank()) return "";
+        String[] partes = nombre.trim().toLowerCase().split(" ");
+        StringBuilder capitalizado = new StringBuilder();
+        for (String parte : partes) {
+            if (!parte.isEmpty()) {
+                capitalizado.append(Character.toUpperCase(parte.charAt(0)))
+                            .append(parte.substring(1))
+                            .append(" ");
+            }
+        }
+        return capitalizado.toString().trim();
+    }
+    
     private void linkActors(String actor1, String actor2) {
+        final String Actor1 = capitalizarNombre(actor1);
+        final String Actor2 = capitalizarNombre(actor2);
         Task<Void> task = new Task<>() {
             @Override
             protected Void call() throws Exception {
@@ -153,11 +168,11 @@ public class ActorLinksController implements Initializable {
                 if (grafo == null) grafo = new GraphLA<>(false);
                 GraphExpander expander = new GraphExpander(tmdb, actorManager, graphLoader);
 
-                boolean exito1 = actorManager.contieneActor(actor1) || expander.agregarActorAlGrafo(grafo, actor1);
-                boolean exito2 = actorManager.contieneActor(actor2) || expander.agregarActorAlGrafo(grafo, actor2);
+                boolean exito1 = actorManager.contieneActor(Actor1) || expander.agregarActorAlGrafo(grafo, Actor1);
+                boolean exito2 = actorManager.contieneActor(Actor2) || expander.agregarActorAlGrafo(grafo, Actor2);
 
-                if (exito1 && exito2 && grafo.getPeliculaEntre(actor1, actor2) == null) {
-                    String id1 = tmdb.buscarActorId(actor1);
+                if (exito1 && exito2 && grafo.getPeliculaEntre(Actor1, Actor2) == null) {
+                    String id1 = tmdb.buscarActorId(Actor1);
                     String id2 = tmdb.buscarActorId(actor2);
 
                     if (id1 != null && id2 != null) {
@@ -166,22 +181,22 @@ public class ActorLinksController implements Initializable {
                         for (String pid : pelis1) {
                             if (pelis2.contains(pid)) {
                                 String nombre = tmdb.obtenerNombrePelicula(pid);
-                                grafo.addEdge(actor1, actor2, 1, nombre);
+                                grafo.addEdge(Actor1, Actor2, 1, nombre);
                                 graphLoader.guardarGrafo(grafo);
-                                System.out.println("✅ Conexión directa forzada: " + actor1 + " ↔ " + actor2 + " por " + nombre);
+                                System.out.println("Conexión directa forzada: " + Actor1 + " ↔ " + Actor2 + " por " + nombre);
                                 break;
                             }
                         }
                     }
                 }
 
-                List<String> camino = grafo.caminoMinimo(actor1, actor2);
+                List<String> camino = grafo.caminoMinimo(Actor1, Actor2);
                 final GraphLA<String> grafofinal = grafo;
 
                 Platform.runLater(() -> {
                     progressIndicator.setVisible(false); // Ocultar al terminar
                     if (camino == null || camino.isEmpty()) {
-                        mostrarError("No se encontró un camino entre " + actor1 + " y " + actor2);
+                        mostrarError("No se encontró un camino entre " + Actor1 + " y " + Actor2);
                     } else {
                         mostrarRutaVisual(camino, grafofinal);
                     }

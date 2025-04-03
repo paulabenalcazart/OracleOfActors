@@ -18,9 +18,23 @@ public class GraphExpander {
         this.graphLoader = graphLoader;
     }
     
+    private String capitalizarNombre(String nombre) {
+        if (nombre == null || nombre.isBlank()) return "";
+        String[] partes = nombre.trim().toLowerCase().split(" ");
+        StringBuilder capitalizado = new StringBuilder();
+        for (String parte : partes) {
+            if (!parte.isEmpty()) {
+                capitalizado.append(Character.toUpperCase(parte.charAt(0)))
+                            .append(parte.substring(1))
+                            .append(" ");
+            }
+        }
+        return capitalizado.toString().trim();
+    }
+    
     public boolean agregarActorAlGrafo(GraphLA<String> grafo, String actorNombre) throws InterruptedException {
         if (grafo == null || actorNombre == null || actorNombre.isBlank()) return false;
-
+        actorNombre = capitalizarNombre(actorNombre);
         System.out.println("Buscando ID para: " + actorNombre);
         String actorId = tmdb.buscarActorId(actorNombre);
         if (actorId == null) return false;

@@ -131,7 +131,7 @@
                                           <Font size="13.0" />
                                        </font>
                                     </Text>
-                                    <Label fx:id="labelDijkstra" text="Dijkstra's algorithm">
+                                    <Label fx:id="labelDijkstra" text="Dijkstra's algorithm ">
                                        <font>
                                           <Font size="13.0" />
                                        </font>

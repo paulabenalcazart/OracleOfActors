@@ -1,24 +1,29 @@
 package ec.edu.uees.controller;
 
 import ec.edu.uees.model.GraphLA;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
 public class GraphLoader {
-    private final String grafoPath;
+
+    // Ruta segura y persistente para el archivo serializado
+    private final String grafoPath = System.getProperty("user.home") + File.separator + ".oracleofactors" + File.separator + "grafo.ser";
 
     public GraphLoader() {
-        this.grafoPath = "grafo.ser";
+        ensureDirectoryExists();
+    }
+
+    private void ensureDirectoryExists() {
+        File dir = new File(System.getProperty("user.home") + File.separator + ".oracleofactors");
+        if (!dir.exists()) {
+            dir.mkdirs(); // Crea la carpeta si no existe
+        }
     }
 
     @SuppressWarnings("unchecked")
     public GraphLA<String> cargarGrafo() {
         File archivo = new File(grafoPath);
         if (!archivo.exists()) return null;
+
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(archivo))) {
             return (GraphLA<String>) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
@@ -30,9 +35,8 @@ public class GraphLoader {
     public boolean guardarGrafo(GraphLA<String> grafo) {
         try {
             File archivo = new File(grafoPath);
-            if (!archivo.exists()) {
-                archivo.createNewFile();
-            }
+            if (!archivo.exists()) archivo.createNewFile();
+
             try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(archivo))) {
                 oos.writeObject(grafo);
             }
