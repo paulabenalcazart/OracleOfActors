@@ -6,7 +6,7 @@ public class Edge<E> implements Serializable {
     private Vertex<E> src;
     private Vertex<E> dts;
     private int peso;
-    private String pelicula; // NUEVO CAMPO
+    private String pelicula;
 
     public Edge(Vertex<E> src, Vertex<E> dts, int peso) {
         this.src = src;

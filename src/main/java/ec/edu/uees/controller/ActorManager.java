@@ -6,21 +6,18 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 import java.util.LinkedHashSet;
 import java.util.Locale;
 import java.util.Set;
 
 public class ActorManager {
 
-    // Ruta segura para ejecución en .jar
     private final String actorFilePath = System.getProperty("user.home") + File.separator + ".oracleofactors" + File.separator + "actors.txt";
 
     public ActorManager() {
         ensureFileExists();
     }
 
-    // Capitaliza correctamente cada nombre: "tom holland" -> "Tom Holland"
     private String capitalizarNombre(String nombre) {
         if (nombre == null || nombre.isBlank()) return "";
         String[] partes = nombre.trim().toLowerCase(Locale.ROOT).split(" ");
@@ -39,7 +36,7 @@ public class ActorManager {
         try {
             Path path = Path.of(actorFilePath);
             if (!Files.exists(path)) {
-                Files.createDirectories(path.getParent()); // crea .oracleofactors si no existe
+                Files.createDirectories(path.getParent());
                 Files.createFile(path);
             }
         } catch (IOException e) {

@@ -47,7 +47,6 @@ public class GraphExpander {
         List<String> mejoresCoactores = new ArrayList<>();
         int maxCoincidencias = 0;
 
-        // Buscar la película con más coactores ya en el grafo
         for (int i = 0; i < Math.min(10, peliculas.size()); i++) {
             String peliculaId = peliculas.get(i);
             List<String> coactores = tmdb.obtenerCoactores(peliculaId);
@@ -64,7 +63,6 @@ public class GraphExpander {
             }
         }
 
-        // Si no se encontró conexión, usa la primera película
         if (mejorPeliculaId == null || mejoresCoactores.isEmpty()) {
             System.out.println("No se encontraron coactores conectables, usando primera película para inicializar red...");
             mejorPeliculaId = peliculas.get(0);
@@ -74,12 +72,10 @@ public class GraphExpander {
         String nombrePelicula = tmdb.obtenerNombrePelicula(mejorPeliculaId);
         boolean conectado = false;
 
-        // Agregar el actor solo si no está
         if (!grafo.contieneVertice(actorNombre)) {
             grafo.addVertex(actorNombre);
         }
 
-        // Agregar coactores con límite y delay
         int coactorMax = 10;
         int agregados = 0;
 
@@ -88,7 +84,7 @@ public class GraphExpander {
                 if (!grafo.contieneVertice(coactor)) {
                     grafo.addVertex(coactor);
                     actorManager.agregarActor(coactor);
-                    Thread.sleep(200); // Pausa para evitar saturar API
+                    Thread.sleep(200);
                 }
 
                 grafo.addEdge(actorNombre, coactor, 1, nombrePelicula);
@@ -100,7 +96,6 @@ public class GraphExpander {
         actorManager.agregarActor(actorNombre);
         graphLoader.guardarGrafo(grafo);
 
-        // Verificar conexión cruzada con actores ya en el grafo
         for (Vertex<String> v : grafo.getVertexes()) {
             if (!v.getData().equals(actorNombre) && grafo.getPeliculaEntre(actorNombre, v.getData()) == null) {
                 String idB = tmdb.buscarActorId(v.getData());
@@ -119,7 +114,6 @@ public class GraphExpander {
             }
         }
 
-        // Conexión con el último actor agregado
         if (ultimoActorAgregado != null && !ultimoActorAgregado.equals(actorNombre)
                 && grafo.getPeliculaEntre(actorNombre, ultimoActorAgregado) == null) {
             String idUltimo = tmdb.buscarActorId(ultimoActorAgregado);

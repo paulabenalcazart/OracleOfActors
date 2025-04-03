@@ -26,7 +26,6 @@ public class AutoCompleteHelper {
         suggestionList.setStyle("-fx-font-size: 14px; -fx-background-color: white; -fx-border-color: lightgray;");
         suggestionList.setEffect(new DropShadow());
 
-        // Personalizar celdas con color al pasar el mouse
         suggestionList.setCellFactory(new Callback<>() {
             @Override
             public ListCell<String> call(ListView<String> listView) {

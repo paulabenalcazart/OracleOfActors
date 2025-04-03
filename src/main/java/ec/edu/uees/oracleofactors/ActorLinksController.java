@@ -8,6 +8,7 @@ import ec.edu.uees.controller.TMDBConnection;
 import ec.edu.uees.model.ActorContext;
 import ec.edu.uees.model.ConfigLoader;
 import ec.edu.uees.model.GraphLA;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -28,6 +29,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -45,6 +47,7 @@ public class ActorLinksController implements Initializable {
     @FXML private Label labelWelcome,labelCredits, labelHIW, labelFabian, labelPaula, labelOracle;
     @FXML private VBox container;
     @FXML private ProgressIndicator progressIndicator;
+    @FXML private HBox hboxLinks;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -194,9 +197,10 @@ public class ActorLinksController implements Initializable {
                 final GraphLA<String> grafofinal = grafo;
 
                 Platform.runLater(() -> {
-                    progressIndicator.setVisible(false); // Ocultar al terminar
+                    progressIndicator.setVisible(false);
+                    hboxLinks.setVisible(true);
                     if (camino == null || camino.isEmpty()) {
-                        mostrarError("No se encontró un camino entre " + Actor1 + " y " + Actor2);
+                        mostrarError("No connection found between " + Actor1 + " and " + Actor2);
                     } else {
                         mostrarRutaVisual(camino, grafofinal);
                     }
@@ -207,76 +211,71 @@ public class ActorLinksController implements Initializable {
         };
         container.getChildren().clear();
         progressIndicator.setVisible(true);
-        progressIndicator.setProgress(-1); // Modo indeterminado
+        hboxLinks.setVisible(false);
+        progressIndicator.setProgress(-1);
 
         new Thread(task).start();
     }
 
     private void mostrarRutaVisual(List<String> camino, GraphLA<String> grafo) {
-    VBox vbox = new VBox(5);
-    vbox.setAlignment(Pos.CENTER);
+        VBox vbox = new VBox(5);
+        vbox.setAlignment(Pos.CENTER);
 
-    for (int i = 0; i < camino.size(); i++) {
-        String actor = camino.get(i);
-        Label actorLabel = new Label(actor);
-        actorLabel.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: black; "
-                + "-fx-background-color: #a8e6a1; -fx-padding: 10px 20px; -fx-border-radius: 10; "
-                + "-fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0.5, 0, 1);");
-        actorLabel.setAlignment(Pos.CENTER);
-        vbox.getChildren().add(actorLabel);
+        for (int i = 0; i < camino.size(); i++) {
+            String actor = camino.get(i);
+            Label actorLabel = new Label(actor);
+            actorLabel.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: black; "
+                    + "-fx-background-color: #a8e6a1; -fx-padding: 10px 20px; -fx-border-radius: 10; "
+                    + "-fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0.5, 0, 1);");
+            actorLabel.setAlignment(Pos.CENTER);
+            vbox.getChildren().add(actorLabel);
 
-        if (i < camino.size() - 1) {
-            Label arrow = new Label("↓");
-            arrow.setStyle("-fx-font-size: 20px; -fx-text-fill: gray;");
-            vbox.getChildren().add(arrow);
+            if (i < camino.size() - 1) {
+                Label arrow = new Label("↓");
+                arrow.setStyle("-fx-font-size: 20px; -fx-text-fill: gray;");
+                vbox.getChildren().add(arrow);
 
-            String nextActor = camino.get(i + 1);
-            String pelicula = grafo.getPeliculaEntre(actor, nextActor);
-            if (pelicula == null) pelicula = "Unknown Movie";
+                String nextActor = camino.get(i + 1);
+                String pelicula = grafo.getPeliculaEntre(actor, nextActor);
+                if (pelicula == null) pelicula = "Unknown Movie";
 
-            Label movieLabel = new Label(pelicula);
-            movieLabel.setStyle("-fx-font-size: 15px; -fx-text-fill: white; -fx-background-color: #8faaff; "
-                    + "-fx-padding: 10px 20px; -fx-border-radius: 10; -fx-background-radius: 10; "
-                    + "-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0.5, 0, 1);");
-            movieLabel.setAlignment(Pos.CENTER);
-            vbox.getChildren().add(movieLabel);
+                Label movieLabel = new Label(pelicula);
+                movieLabel.setStyle("-fx-font-size: 15px; -fx-text-fill: white; -fx-background-color: #8faaff; "
+                        + "-fx-padding: 10px 20px; -fx-border-radius: 10; -fx-background-radius: 10; "
+                        + "-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0.5, 0, 1);");
+                movieLabel.setAlignment(Pos.CENTER);
+                vbox.getChildren().add(movieLabel);
 
-            Label arrow2 = new Label("↓");
-            arrow2.setStyle("-fx-font-size: 20px; -fx-text-fill: gray;");
-            vbox.getChildren().add(arrow2);
+                Label arrow2 = new Label("↓");
+                arrow2.setStyle("-fx-font-size: 20px; -fx-text-fill: gray;");
+                vbox.getChildren().add(arrow2);
+            }
         }
+
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setContent(vbox);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        scrollPane.setStyle("-fx-background-color: transparent; -fx-background: transparent;");
+        scrollPane.getStyleClass().add("scroll-pane");
+
+        scrollPane.lookupAll(".scroll-bar").forEach(bar -> {
+            bar.setStyle("-fx-background-color: transparent;");
+        });
+
+        scrollPane.setOnScroll(event -> {
+            double deltaY = event.getDeltaY() * 0.005;
+            scrollPane.setVvalue(scrollPane.getVvalue() - deltaY);
+        });
+
+        VBox wrapper = new VBox(scrollPane);
+        wrapper.setAlignment(Pos.CENTER);
+        wrapper.setFillWidth(true);
+
+        container.getChildren().clear();
+        container.getChildren().add(wrapper);
     }
-
-    // Crear ScrollPane dinámico
-    ScrollPane scrollPane = new ScrollPane();
-    scrollPane.setContent(vbox);
-    scrollPane.setFitToWidth(true);
-    scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-    scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
-    scrollPane.setStyle("-fx-background-color: transparent; -fx-background: transparent;");
-    scrollPane.getStyleClass().add("scroll-pane");
-
-    // Estilo visible (opcional si usas CSS externo)
-    scrollPane.lookupAll(".scroll-bar").forEach(bar -> {
-        bar.setStyle("-fx-background-color: transparent;");
-    });
-
-    // Scroll animado
-    scrollPane.setOnScroll(event -> {
-        double deltaY = event.getDeltaY() * 0.005;
-        scrollPane.setVvalue(scrollPane.getVvalue() - deltaY);
-    });
-
-    // Centrado vertical si hay espacio
-    VBox wrapper = new VBox(scrollPane);
-    wrapper.setAlignment(Pos.CENTER);
-    wrapper.setFillWidth(true);
-
-    // Reemplazar contenido
-    container.getChildren().clear();
-    container.getChildren().add(wrapper);
-}
-
 
     private void mostrarError(String mensaje) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -293,7 +292,9 @@ public class ActorLinksController implements Initializable {
             mostrarError("Please enter both actor names.");
             return;
         }
-        linkActors(a1, a2);
+        ActorContext.actor1 = a1;
+        ActorContext.actor2 = a2;
+        restartStage("actorlinks");
     }
     
     private TranslateTransition moveBanner(ImageView iv) {
@@ -315,5 +316,36 @@ public class ActorLinksController implements Initializable {
     private void minimizarStage() {
         stage = (Stage) minimizar.getScene().getWindow();
         stage.setIconified(true);
+    }
+    
+    @FXML
+    private void eraseNetwork() {
+        String basePath = System.getProperty("user.home") + File.separator + ".oracleofactors";
+        File grafoFile = new File(basePath + File.separator + "grafo.ser");
+        File actorsFile = new File(basePath + File.separator + "actors.txt");
+
+        boolean grafoDeleted = grafoFile.exists() && grafoFile.delete();
+        boolean actorsDeleted = actorsFile.exists() && actorsFile.delete();
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Reset Network");
+        alert.setHeaderText(null);
+
+        if (grafoDeleted || actorsDeleted) {
+            alert.setContentText("Network data has been successfully deleted.");
+        } else {
+            alert.setContentText("No files were deleted. They may not exist.");
+        }
+
+        alert.showAndWait();
+        restartStage("main");
+    }
+    
+    private void restartStage(String fxml) {
+        try {
+            App.setRoot(fxml);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 }

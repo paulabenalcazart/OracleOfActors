@@ -3,6 +3,7 @@ package ec.edu.uees.oracleofactors;
 import ec.edu.uees.controller.ActorManager;
 import ec.edu.uees.controller.AutoCompleteHelper;
 import ec.edu.uees.model.ActorContext;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -133,6 +134,13 @@ public class MainController implements Initializable {
         return tt;
     }
     
+    private void mostrarError(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText("Error");
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
+    
     @FXML
     private void findLink() throws IOException {
         if (textfield1.getText().isBlank() || textfield2.getText().isBlank()) {
@@ -158,5 +166,36 @@ public class MainController implements Initializable {
         stage = (Stage) minimizar.getScene().getWindow();
         stage.setIconified(true);
     }
+    
+    @FXML
+    private void eraseNetwork() {
+        String basePath = System.getProperty("user.home") + File.separator + ".oracleofactors";
+        File grafoFile = new File(basePath + File.separator + "grafo.ser");
+        File actorsFile = new File(basePath + File.separator + "actors.txt");
 
+        boolean grafoDeleted = grafoFile.exists() && grafoFile.delete();
+        boolean actorsDeleted = actorsFile.exists() && actorsFile.delete();
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Reset Network");
+        alert.setHeaderText(null);
+
+        if (grafoDeleted || actorsDeleted) {
+            alert.setContentText("Network data has been successfully deleted.");
+        } else {
+            alert.setContentText("No files were deleted. They may not exist.");
+        }
+
+        alert.showAndWait();
+        restartStage();
+    }
+    
+    private void restartStage() {
+        try {
+            App.setRoot("main");
+        } catch (IOException e) {
+            e.printStackTrace();
+            mostrarError("Error ocurred while changing scenes.");
+        }
+    }
 }

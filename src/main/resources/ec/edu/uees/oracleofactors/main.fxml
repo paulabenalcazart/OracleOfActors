@@ -113,6 +113,6 @@
             </ImageView>
          </children>
       </VBox>
-      <Button fx:id="btnErase" layoutY="360.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="179.0" text="Erase Network" />
+      <Button fx:id="btnErase" layoutY="360.0" mnemonicParsing="false" onAction="#eraseNetwork" prefHeight="47.0" prefWidth="179.0" text="Erase Network" />
    </children>
 </AnchorPane>
