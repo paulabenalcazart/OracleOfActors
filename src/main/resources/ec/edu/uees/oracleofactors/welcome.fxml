@@ -47,8 +47,23 @@
       </AnchorPane>
       <VBox alignment="CENTER" layoutX="96.0" layoutY="136.0" prefHeight="463.0" prefWidth="778.0" spacing="10.0" translateY="-10.0">
          <children>
-            <Label fx:id="howtitle" text="How the Oracle of Actors works" />
-            <VBox alignment="CENTER" prefHeight="387.0" prefWidth="778.0" />
+            <Label fx:id="welcometitle" text="About the Oracle of Actors" />
+            <VBox alignment="CENTER" prefHeight="408.0" prefWidth="778.0">
+               <children>
+                  <Label prefHeight="230.0" prefWidth="530.0" text="This is the most comprehensive actor-connection tool on the web. Unlike the original Kevin Bacon game, here you can choose any two actors or actresses and discover how they are connected through shared movies in the smallest number of links possible. We do not consider links through television shows, made-for-tv movies, writers, producers, directors, etc. For example, you might wonder how Mary Pickford can be connected to Kevin Bacon:" wrapText="true">
+                     <font>
+                        <Font size="13.0" />
+                     </font></Label>
+                  <ImageView fitHeight="216.0" fitWidth="256.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../images/welcomeimage.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="210.0" prefWidth="530.0" text="For every actor involved, their name appears in a stylized green bubble, followed by the movie that connects them to the next actor, shown in a soft blue tag. These elements are arranged in sequence inside a scrollable container, offering a smooth and engaging way to explore the entire path between two stars." wrapText="true">
+                     <font>
+                        <Font size="13.0" />
+                     </font></Label>
+               </children></VBox>
          </children>
       </VBox>
       <Label fx:id="names" layoutX="14.0" layoutY="590.0" opacity="0.5" text="Fabián Rodas &amp; Paula Benalcázar" />

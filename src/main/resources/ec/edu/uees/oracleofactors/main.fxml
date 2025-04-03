@@ -48,7 +48,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <VBox alignment="CENTER" layoutX="96.0" layoutY="136.0" prefHeight="469.0" prefWidth="778.0" spacing="15.0">
+      <VBox alignment="CENTER" layoutX="10.0" layoutY="135.0" prefHeight="469.0" prefWidth="950.0" spacing="15.0">
          <children>
             <Label fx:id="explicacion" text="Think of two actors and find out how they are connected!" />
             <StackPane prefHeight="263.0" prefWidth="778.0">
@@ -68,7 +68,7 @@
                   <Button fx:id="btnfind" mnemonicParsing="false" onAction="#findLink" prefHeight="47.0" prefWidth="116.0" text="Find Link" />
                </children>
                <VBox.margin>
-                  <Insets left="100.0" />
+                  <Insets />
                </VBox.margin>
             </HBox>
          </children>

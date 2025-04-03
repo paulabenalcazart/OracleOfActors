@@ -144,3 +144,33 @@
     -fx-font-size: 14px;
     -fx-pref-width: 300px;
 }
+
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-padding: 10;
+}
+
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-padding: 0 2 0 2;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: rgba(100,100,255,0.6);
+    -fx-background-insets: 0;
+    -fx-background-radius: 8;
+}
+
+.scroll-bar:vertical .track {
+    -fx-background-color: rgba(200,200,200,0.1);
+    -fx-background-radius: 8;
+}
+
+.scroll-bar:vertical:hover .thumb {
+    -fx-background-color: rgba(100,100,255,0.9);
+}
+
+#labelAPI, #labelSER, #labelTXT, #labelMovie, #labelDijkstra, #labelSerialization {
+    -fx-text-fill: #2c6493;
+    -fx-font-weight: bold;
+}

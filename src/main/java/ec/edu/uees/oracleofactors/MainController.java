@@ -1,8 +1,12 @@
 package ec.edu.uees.oracleofactors;
 
+import ec.edu.uees.controller.ActorManager;
+import ec.edu.uees.controller.AutoCompleteHelper;
+import ec.edu.uees.model.ActorContext;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Set;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,6 +33,12 @@ public class MainController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        if(textfield1 != null && textfield2 != null) {
+           Set<String> actores = new ActorManager().leerActores();
+            AutoCompleteHelper.enableAutoComplete(textfield1, actores);
+            AutoCompleteHelper.enableAutoComplete(textfield2, actores);
+        }
+        
         if(bannerPane.getChildren().size() == 1){
             ImageView banner2 = new ImageView(new Image(getClass().getResourceAsStream("/images/banner.png")));
             banner2.setLayoutX(970);
@@ -125,19 +135,16 @@ public class MainController implements Initializable {
     
     @FXML
     private void findLink() throws IOException {
-        if(textfield1.getText().isBlank() || textfield2.getText().isBlank()) {
+        if (textfield1.getText().isBlank() || textfield2.getText().isBlank()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Fatal Error");
             alert.setContentText("Please fill the blanks with actors.");
             alert.showAndWait();
             return;
         }
+        ActorContext.actor1 = textfield1.getText().trim();
+        ActorContext.actor2 = textfield2.getText().trim();
         App.setRoot("actorlinks");
-        linkActors();
-    }
-    
-    private void linkActors() {
-        /* LOGICA PARA GRAFOS */
     }
     
     @FXML

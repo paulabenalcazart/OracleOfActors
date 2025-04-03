@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="970.0" stylesheets="@../../../../css/estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.uees.oracleofactors.MainController">
+   <children>
+      <AnchorPane fx:id="anchorpane" prefHeight="120.0" prefWidth="970.0">
+         <children>
+            <Rectangle fx:id="black" arcHeight="5.0" arcWidth="5.0" height="120.0" stroke="BLACK" strokeType="INSIDE" width="982.0" />
+            <AnchorPane fx:id="bannerPane" prefHeight="120.0" prefWidth="970.0">
+               <children>
+                  <ImageView fx:id="banner1" fitHeight="120.0" fitWidth="970.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../images/banner.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="970.0">
+               <children>
+                  <Button fx:id="minimizar" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#minimizarStage" prefHeight="63.0" prefWidth="70.0" text="-" translateY="-30.0">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="cerrar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cerrarStage" prefHeight="33.0" prefWidth="70.0" text="❌">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <ImageView fx:id="maintitle" fitHeight="110.0" fitWidth="705.0" layoutX="130.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../images/maintitle.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <VBox alignment="TOP_CENTER" layoutX="232.0" layoutY="152.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="447.0" prefWidth="654.0" spacing="10.0" translateY="-10.0">
+         <children>
+            <Label fx:id="howtitle" text="How the Oracle of Actors works" translateX="-30.0" />
+            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="296.0" prefWidth="662.0">
+               <children>
+                  <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="654.0" spacing="10.0">
+                     <children>
+                        <TextFlow prefHeight="88.0" prefWidth="606.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The Oracle of Actors builds connections between actors using real-time TMDB data, combining API calls with local storage to ensure a responsive experience. Actor information, movie IDs, and co-stars are fetched using an ">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Text>
+                              <Label fx:id="labelAPI" text="API Key " textFill="#284ccc">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="and stored both in a ">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Text>
+                              <Label fx:id="labelSER" text=".ser " textFill="#284ccc">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="file for the graph structure and a">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Text>
+                              <Label fx:id="labelTXT" text=" .txt " textFill="#284ccc">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="file for autocomplete support. This design ensures that new actors are integrated smoothly while keeping the graph coherent and efficient.">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" The app handles actor integration by:">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </TextFlow>
+                        <VBox prefHeight="98.0" prefWidth="697.0" spacing="15.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="• Prioritizing movies with existing co-actors.">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Text>
+                              <TextFlow prefHeight="22.0" prefWidth="606.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="• Storing connections with the ">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Text>
+                                    <Label fx:id="labelMovie" text="most relevant movie">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" between two actors">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </TextFlow>
+                              <TextFlow prefHeight="22.0" prefWidth="606.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="• Using " wrappingWidth="45.4501953125">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Text>
+                                    <Label fx:id="labelDijkstra" text="Dijkstra's algorithm">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="to find the shortest path between actors.">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </TextFlow>
+                              <TextFlow prefHeight="22.0" prefWidth="606.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="• Saving the growing graph using Java ">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Text>
+                                    <Label fx:id="labelSerialization" text="serialization.">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </TextFlow>
+                           </children>
+                        </VBox>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Everything runs within a JavaFX desktop interface. Heavy tasks like API calls or path calculation are done in the background (Task&lt;Void&gt;) to keep the interface fluid. Users can view the connection path in a scrollable, animated, and styled graph, with a ProgressIndicator shown during processing." wrappingWidth="661.4870002269745">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+               </children></VBox>
+         </children>
+      </VBox>
+      <Label fx:id="names" layoutX="14.0" layoutY="590.0" opacity="0.5" text="Fabián Rodas &amp; Paula Benalcázar" />
+      <Label fx:id="fraseMain" layoutX="232.0" layoutY="582.0" opacity="0.5" prefHeight="34.0" prefWidth="732.0" text="&quot;Think two actors are worlds apart? Think again.&quot;Discover the surprising connections between your favorite actors through the movies they've shared." wrapText="true">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <VBox fx:id="vboxMenu" alignment="CENTER_RIGHT" layoutY="120.0" prefHeight="237.0" prefWidth="179.0">
+         <children>
+            <Label fx:id="labelWelcome" prefHeight="28.0" prefWidth="204.0" text=" Welcome!">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelCredits" prefHeight="28.0" prefWidth="179.0" text=" Credits">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelHIW" prefHeight="28.0" prefWidth="179.0" text=" How it Works">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label prefHeight="51.0" prefWidth="179.0" text="© 2025 by Fabián and Paula. All rights reserved." translateX="5.0" wrapText="true">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label text="This product uses the TMDB API but is not endorsed or certified by TMDB." translateX="5.0" wrapText="true">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="tmdbLogo" fitHeight="70.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" translateX="-65.0">
+               <image>
+                  <Image url="@../../../../images/tmdbicon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

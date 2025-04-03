@@ -1,14 +1,15 @@
 package ec.edu.uees.model;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
-public class Vertex<E> {
+public class Vertex<E> implements Serializable {
     private E data;
     private LinkedList<Edge<E>> edges;
     private boolean visited;
     private Vertex<E> antecesor;
     private int distancia;
-    
+
     public Vertex(E data) {
         this.data = data;
         this.edges = new LinkedList<>();
@@ -54,4 +55,4 @@ public class Vertex<E> {
     public void setDistancia(int distancia) {
         this.distancia = distancia;
     }
-}
+} 
